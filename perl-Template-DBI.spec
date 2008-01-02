@@ -22,6 +22,7 @@ BuildRequires:	perl(DBI) >= 1.0
 BuildRequires:	perl(Template) >= 2.15
 Requires:	perl-Template >= 2.15
 BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 The Template-DBI distribution contains the DBI plugin for the Template
