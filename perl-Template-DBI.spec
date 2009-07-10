@@ -1,28 +1,24 @@
-%define module  Template-DBI
-%define name	perl-%{module}
-%define	modprefix Template
+%define upstream_name    Template-DBI
+%define upstream_version 2.64
 
-%define version 2.64
+Name: 		perl-%{upstream_name}
+Version: 	%perl_convert_version %{upstream_version}
+Release: 	%mkrel 1
 
-%define	rel	2
-%define release %mkrel %{rel}
-
-Name: 		%{name}
-Version: 	%{version}
-Release: 	%{release}
 Summary: 	Template interface to the DBI module
 License:	Artistic/GPL
 Group:		Development/Perl
-Source:		http://www.cpan.org/modules/by-module/%{modprefix}/%{module}-%{version}.tar.bz2
 URL:		http://www.template-toolkit.org
+Source0:	http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 Buildrequires:	perl-devel
 %endif
 BuildRequires:	perl(DBI) >= 1.0
 BuildRequires:	perl(Template) >= 2.15
-Requires:	perl-Template >= 2.15
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+Requires:	perl(Template) >= 2.15
 
 %description
 The Template-DBI distribution contains the DBI plugin for the Template
@@ -35,7 +31,7 @@ this separate Template-DBI distribution.
 
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %{__perl} Makefile.PL INSTALLDIRS=vendor <<EOF
 EOF
@@ -54,6 +50,6 @@ rm -rf %{buildroot}
 %files
 %defattr(644,root,root,755)
 %doc README
-%{perl_vendorlib}/%{modprefix}
+%{perl_vendorlib}/Template
 %{_mandir}/*/*
 
