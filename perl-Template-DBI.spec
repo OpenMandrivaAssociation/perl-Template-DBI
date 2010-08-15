@@ -1,15 +1,15 @@
 %define upstream_name    Template-DBI
-%define upstream_version 2.64
+%define upstream_version 2.65
 
 Name: 		perl-%{upstream_name}
 Version: 	%perl_convert_version %{upstream_version}
-Release: 	%mkrel 2
+Release: 	%mkrel 1
 
 Summary: 	Template interface to the DBI module
 License:	Artistic/GPL
 Group:		Development/Perl
 URL:		http://www.template-toolkit.org
-Source0:	http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.bz2
+Source0:	http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.gz
 
 %if %{mdkversion} < 1010
 Buildrequires:	perl-devel
@@ -52,4 +52,3 @@ rm -rf %{buildroot}
 %doc README
 %{perl_vendorlib}/Template
 %{_mandir}/*/*
-
