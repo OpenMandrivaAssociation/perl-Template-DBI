@@ -1,22 +1,20 @@
 %define upstream_name    Template-DBI
 %define upstream_version 2.65
 
-Name: 		perl-%{upstream_name}
-Version: 	%perl_convert_version %{upstream_version}
-Release: 	%mkrel 1
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	2
 
-Summary: 	Template interface to the DBI module
+Summary:	Template interface to the DBI module
 License:	Artistic/GPL
 Group:		Development/Perl
 URL:		http://www.template-toolkit.org
 Source0:	http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.gz
 
-%if %{mdkversion} < 1010
-Buildrequires:	perl-devel
-%endif
+BuildRequires:	perl-devel
 BuildRequires:	perl(DBI) >= 1.0
 BuildRequires:	perl(Template) >= 2.15
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
+
 BuildArch:	noarch
 Requires:	perl(Template) >= 2.15
 
@@ -33,22 +31,50 @@ this separate Template-DBI distribution.
 %prep
 %setup -q -n %{upstream_name}-%{upstream_version}
 
-%{__perl} Makefile.PL INSTALLDIRS=vendor <<EOF
+perl Makefile.PL INSTALLDIRS=vendor <<EOF
 EOF
 %make
 
-##%check
-##%__make test
+%check
+##make test
 
 %install
-rm -rf %{buildroot}
-%{makeinstall_std}
-
-%clean
-rm -rf %{buildroot}
+%makeinstall_std
 
 %files
 %defattr(644,root,root,755)
 %doc README
 %{perl_vendorlib}/Template
 %{_mandir}/*/*
+
+
+%changelog
+* Sun Aug 15 2010 Jérôme Quelin <jquelin@mandriva.org> 2.650.0-1mdv2011.0
++ Revision: 569957
+- update to 2.65
+
+* Tue Jul 13 2010 Jérôme Quelin <jquelin@mandriva.org> 2.640.0-2mdv2011.0
++ Revision: 552005
+- rebuild
+
+* Fri Jul 10 2009 Jérôme Quelin <jquelin@mandriva.org> 2.640.0-1mdv2010.0
++ Revision: 394271
+- fixed a require on package name, instead of metadata perl(...) that
+  prevented perl-Template-Toolkit to be upgraded
+- using %%perl_convert_version
+
+* Wed Jan 02 2008 Olivier Blin <oblin@mandriva.com> 2.64-2mdv2009.0
++ Revision: 140717
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Sat Sep 15 2007 Guillaume Rousse <guillomovitch@mandriva.org> 2.64-2mdv2008.0
++ Revision: 86929
+- rebuild
+
+
+* Fri May 26 2006 Scott Karns <scottk@mandriva.org> 2.64-1mdv2007.0
+- Initial Mandriva package (was part of perl-Template < 2.15)
+
