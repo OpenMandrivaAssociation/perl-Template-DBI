@@ -8,7 +8,7 @@ Release:	4
 Summary:	Template interface to the DBI module
 License:	Artistic/GPL
 Group:		Development/Perl
-URL:		http://www.template-toolkit.org
+URL:		https://www.template-toolkit.org
 Source0:	http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.gz
 
 BuildRequires:	perl-devel
