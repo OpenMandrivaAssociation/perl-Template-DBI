@@ -11,6 +11,7 @@ Group:		Development/Perl
 URL:		https://www.template-toolkit.org
 Source0:	http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.gz
 
+BuildRequires:	make
 BuildRequires:	perl-devel
 BuildRequires:	perl(DBI) >= 1.0
 BuildRequires:	perl(Template) >= 2.15
