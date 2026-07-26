@@ -1,15 +1,13 @@
 %define upstream_name    Template-DBI
-%define upstream_version 2.65
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	5
+Version:	2.65
+Release:	6
 
 Summary:	Template interface to the DBI module
 License:	Artistic/GPL
 Group:		Development/Perl
 URL:		https://www.template-toolkit.org
-Source0:	https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Template-DBI-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Template-DBI-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -30,7 +28,7 @@ this separate Template-DBI distribution.
 
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 perl Makefile.PL INSTALLDIRS=vendor <<EOF
 EOF
@@ -62,9 +60,7 @@ EOF
 + Revision: 394271
 - fixed a require on package name, instead of metadata perl(...) that
   prevented perl-Template-Toolkit to be upgraded
-- using %%perl_convert_version
-
-* Wed Jan 02 2008 Olivier Blin <oblin@mandriva.com> 2.64-2mdv2009.0
+- using %2.65 Wed Jan 02 2008 Olivier Blin <oblin@mandriva.com> 2.64-2mdv2009.0
 + Revision: 140717
 - restore BuildRoot
 
