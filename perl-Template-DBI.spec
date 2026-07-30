@@ -1,13 +1,14 @@
 %define upstream_name    Template-DBI
+%define upstream_version 2.65
 Name:		perl-%{upstream_name}
 Version:	2.65
-Release:	6
+Release:	1
 
 Summary:	Template interface to the DBI module
 License:	Artistic/GPL
 Group:		Development/Perl
 URL:		https://www.template-toolkit.org
-Source0:	https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Template-DBI-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Template-DBI-2.65.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -46,32 +47,4 @@ EOF
 %{perl_vendorlib}/Template
 %{_mandir}/*/*
 
-
-%changelog
-* Sun Aug 15 2010 Jérôme Quelin <jquelin@mandriva.org> 2.650.0-1mdv2011.0
-+ Revision: 569957
-- update to 2.65
-
-* Tue Jul 13 2010 Jérôme Quelin <jquelin@mandriva.org> 2.640.0-2mdv2011.0
-+ Revision: 552005
-- rebuild
-
-* Fri Jul 10 2009 Jérôme Quelin <jquelin@mandriva.org> 2.640.0-1mdv2010.0
-+ Revision: 394271
-- fixed a require on package name, instead of metadata perl(...) that
-  prevented perl-Template-Toolkit to be upgraded
-- using %2.65 Wed Jan 02 2008 Olivier Blin <oblin@mandriva.com> 2.64-2mdv2009.0
-+ Revision: 140717
-- restore BuildRoot
-
-  + Thierry Vignaud <tv@mandriva.org>
-    - kill re-definition of %%buildroot on Pixel's request
-
-* Sat Sep 15 2007 Guillaume Rousse <guillomovitch@mandriva.org> 2.64-2mdv2008.0
-+ Revision: 86929
-- rebuild
-
-
-* Fri May 26 2006 Scott Karns <scottk@mandriva.org> 2.64-1mdv2007.0
-- Initial Mandriva package (was part of perl-Template < 2.15)
 
