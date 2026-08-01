@@ -2,7 +2,7 @@
 %define upstream_version 2.65
 Name:		perl-%{upstream_name}
 Version:	2.65
-Release:	3
+Release:	4
 
 Summary:	Template interface to the DBI module
 License:	Artistic/GPL
